@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 #include <functional>
-//#include "MyBuilder.h"
 #include <misc/utils.h>
 #include <oasis/parser.h>
+#include "MyBuilder.h"
 using namespace std;
 using namespace Oasis;
 
@@ -17,8 +17,8 @@ void ProcessFile(const char* path) {
                      DisplayWarning,
                      //bind1st(mem_fun(&MyBuilder::ShowWarning), &builder)
                      options);
-  //MyBuilder builder;
-  //parser.parseFile(&builder);
+  MyBuilder builder;
+  parser.parseFile(&builder);
 }
 
 int main(int argc, const char *argv[])
@@ -29,7 +29,8 @@ int main(int argc, const char *argv[])
     cerr << usage << endl;
     exit(1);
   }
-  ProcessFile("./test");
+
+  ProcessFile(argv[1]);
   
   return 0;
 }
