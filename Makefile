@@ -1,7 +1,7 @@
 CPP = llvm-g++
 
 # Make window binary
-SRC=main.cpp
+SRC=main.cpp cell.cpp
 HDR=$(SRC:.cpp=.h)
 OBJ=$(SRC:.cpp=.o) 
 BIN=window

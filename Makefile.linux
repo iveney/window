@@ -5,9 +5,9 @@ CC = ${PREFIX}/bin/gcc
 CPP = ${PREFIX}/bin/g++
 
 # Make window exe
-SRC=main.cpp MyBuilder.cpp
+SRC=main.cpp MyBuilder.cpp MyCell.cpp # MyParser.cpp
 HDR=$(SRC:.cpp=.h)
-OBJ=$(SRC:.cpp=.o) 
+OBJ=$(SRC:.cpp=.o)
 BIN=window
 
 # Make creator example
