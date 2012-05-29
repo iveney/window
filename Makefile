@@ -1,10 +1,6 @@
-# Choose the version of GCC that we want to use
-GCC_VERSION = 4.6.2
-PREFIX = /home/utils/gcc-${GCC_VERSION}
-CC = ${PREFIX}/bin/gcc
-CPP = ${PREFIX}/bin/g++
+CPP = llvm-g++
 
-# Make window exe
+# Make window binary
 SRC=main.cpp
 HDR=$(SRC:.cpp=.h)
 OBJ=$(SRC:.cpp=.o) 
@@ -16,17 +12,15 @@ CREATOR_HDR=$(CREATOR_SRC:.cpp=.h)
 CREATOR_OBJ=$(CREATOR_SRC:.cpp=.o)
 CREATOR=creator_example
 
-# Boost path
-BOOST=/home/utils/boost-1.49.0/gcc-4.6.2-64/include
-
-ANUVAD_SRC=anuvad-0.11/src
-ANUVAD_LIB=anuvad-0.11/lib
+ANUVAD=anuvad-0.11
+ANUVAD_SRC=$(ANUVAD)/src
+ANUVAD_LIB=$(ANUVAD)/lib
 CPPFLAGS=
-CFLAGS=-Wall -Wextra -pipe -O2 -msse4.2 -mssse3 -mfpmath=sse -march=core2
+CFLAGS=-g -Wall -Wextra -O2 #-pipe -msse4.2 -mssse3 -mfpmath=sse -march=core2
 #LDFLAGS=-Wl,-O1,-hash-style=gnu
 
 # Note: hard-wire the library to the exe
-LDFLAGS=-L$(ANUVAD_LIB) -Wl,-rpath,${PREFIX}/lib64
+LDFLAGS=-L$(ANUVAD_LIB)
 LDLIBS=-loasis -lmisc -lz
 
 # cscope related
@@ -48,7 +42,7 @@ all: window
 	@echo "Making all..."
 
 %.o: %.cpp  %.h
-	$(CPP) $(CPPFLAGS) $(CFLAGS) -I$(ANUVAD_SRC) -I$(BOOST) -c $<  -o $@
+	$(CPP) $(CPPFLAGS) $(CFLAGS) -I$(ANUVAD) -I$(ANUVAD_SRC) -c $<  -o $@
 
 tags: $(SRC) $(HDR)
 	@echo "Generating tags..."
