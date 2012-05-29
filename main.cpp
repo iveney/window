@@ -4,8 +4,6 @@
 //#include "MyBuilder.h"
 #include <misc/utils.h>
 #include <oasis/parser.h>
-#include <boost/function.hpp>
-using namespace boost;
 using namespace std;
 using namespace Oasis;
 
@@ -13,7 +11,7 @@ static void DisplayWarning(const char* msg) {
   cerr << msg << endl;
 }
 
-void ProfessFile(const char* path) {
+void ProcessFile(const char* path) {
   OasisParserOptions options;
   OasisParser parser(path, 
                      DisplayWarning,
@@ -31,6 +29,7 @@ int main(int argc, const char *argv[])
     cerr << usage << endl;
     exit(1);
   }
+  ProcessFile("./test");
   
   return 0;
 }
