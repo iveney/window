@@ -16,9 +16,7 @@ CREATOR_HDR=$(CREATOR_SRC:.cpp=.h)
 CREATOR_OBJ=$(CREATOR_SRC:.cpp=.o)
 CREATOR=creator_example
 
-# Boost path
-BOOST=/home/utils/boost-1.49.0/gcc-4.6.2-64/include
-
+ANUVAD=anuvad-0.11
 ANUVAD_SRC=anuvad-0.11/src
 ANUVAD_LIB=anuvad-0.11/lib
 CPPFLAGS=
@@ -48,7 +46,7 @@ all: window
 	@echo "Making all..."
 
 %.o: %.cpp  %.h
-	$(CPP) $(CPPFLAGS) $(CFLAGS) -I$(ANUVAD_SRC) -I$(BOOST) -c $<  -o $@
+	$(CPP) $(CPPFLAGS) $(CFLAGS) -I$(ANUVAD_SRC) -I$(ANUVAD) -c $<  -o $@
 
 tags: $(SRC) $(HDR)
 	@echo "Generating tags..."
