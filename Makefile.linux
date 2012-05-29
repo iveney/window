@@ -5,7 +5,7 @@ CC = ${PREFIX}/bin/gcc
 CPP = ${PREFIX}/bin/g++
 
 # Make window exe
-SRC=main.cpp
+SRC=main.cpp MyBuilder.cpp
 HDR=$(SRC:.cpp=.h)
 OBJ=$(SRC:.cpp=.o) 
 BIN=window
@@ -22,7 +22,7 @@ BOOST=/home/utils/boost-1.49.0/gcc-4.6.2-64/include
 ANUVAD_SRC=anuvad-0.11/src
 ANUVAD_LIB=anuvad-0.11/lib
 CPPFLAGS=
-CFLAGS=-Wall -Wextra -pipe -O2 -msse4.2 -mssse3 -mfpmath=sse -march=core2
+CFLAGS=-Wall -Wextra -pipe -O2 -msse4.2 -mssse3 -mfpmath=sse
 #LDFLAGS=-Wl,-O1,-hash-style=gnu
 
 # Note: hard-wire the library to the exe
